@@ -1,0 +1,8 @@
+{
+  "packages": {
+    "doiitshared": {
+      "release-type": "go",
+      "package-name": "doiitshared"
+    }
+  }
+}
