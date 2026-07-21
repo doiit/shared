@@ -1,4 +1,4 @@
-module doiit-shared
+module github.com/doiit/shared
 
 go 1.26.4
 
