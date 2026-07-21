@@ -6,6 +6,9 @@ import (
 	"github.com/gofrs/uuid/v5"
 )
 
+// User represents a user in the doiit system.
+// The User struct contains fields for user identification, authentication, and metadata.
+// The struct is designed to be used with a database, as indicated by the `db` tags, and also supports JSON serialization for API responses.
 type User struct {
 	ID        uuid.UUID `json:"id" db:"id"`
 	Email     string    `json:"email" binding:"required,email,lowercase"`
@@ -25,6 +28,9 @@ type User struct {
 	CreatedBy *uuid.UUID `json:"created_by,omitempty" db:"created_by"`
 	UpdatedBy *uuid.UUID `json:"updated_by,omitempty" db:"updated_by"`
 }
+
+// Role represents a role that can be assigned to a user in the doiit system.
+// The Role struct contains fields for role identification, description, and metadata.
 type Role struct {
 	ID          uuid.UUID  `json:"id" db:"id" binding:"required,uuid"`
 	Name        string     `json:"name" binding:"required"`
@@ -35,6 +41,8 @@ type Role struct {
 	DeletedAt   *time.Time `json:"deleted_at,omitempty" db:"deleted_at"`
 }
 
+// UserResponse represents the response structure for user-related API endpoints.
+// The UserResponse struct is designed to be used in API responses, providing a structured representation of user data without exposing sensitive information like passwords.
 type UserResponse struct {
 	ID          uuid.UUID  `json:"id" binding:"required,uuid"`
 	Email       string     `json:"email" binding:"required,email"`

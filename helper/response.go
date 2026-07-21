@@ -9,6 +9,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// Pagination represents the pagination information for API responses.
 type Pagination struct {
 	Limit   int64   `json:"limit"`
 	Offset  int64   `json:"offset"`
@@ -18,6 +19,9 @@ type Pagination struct {
 	Total   int     `json:"total"`
 }
 
+// GetPagination retrieves pagination parameters from the Gin context.
+// It reads the "limit" and "offset" query parameters from the request, falling back to default values if they are not provided.
+// The function returns a Pagination struct containing the limit, offset, previous page, next page, and current page information.
 func GetPagination(c *gin.Context) Pagination {
 	// Get the page limit from the environment variable or use the default value of 10
 	PAGE_LIMIT := GetEnv("PAGE_LIMIT", "10")
@@ -46,6 +50,8 @@ func GetPagination(c *gin.Context) Pagination {
 	}
 }
 
+// SendResponse sends a structured JSON response to the client.
+// It includes the status code, error code, message, success flag, and any additional data.
 func SendResponse(c *gin.Context, statusCode int, errorCode string, message string, success bool, data any) {
 	defer c.Abort()
 	c.JSON(statusCode, gin.H{
@@ -56,6 +62,9 @@ func SendResponse(c *gin.Context, statusCode int, errorCode string, message stri
 	})
 }
 
+// SendSuccessResponse sends a successful JSON response to the client.
+// It includes the status code, message, and any additional data.
+// If the status code is not provided, it defaults to HTTP 200 OK.
 func SendSuccessResponse(c *gin.Context, statusCode int, message string, data any) {
 	if statusCode == 0 {
 		statusCode = http.StatusOK
@@ -63,6 +72,8 @@ func SendSuccessResponse(c *gin.Context, statusCode int, message string, data an
 	SendResponse(c, statusCode, "", message, true, data)
 }
 
+// SendErrorResponse sends an error JSON response to the client.
+// It includes the status code, error code, and message.
 func SendErrorResponse(c *gin.Context, statusCode int, errorCode, message string) {
 	SendResponse(c, statusCode, errorCode, message, false, nil)
 }

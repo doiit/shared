@@ -9,6 +9,7 @@ import (
 	"github.com/gofrs/uuid/v5"
 )
 
+// UserContext represents the context of a user in the application.
 type UserContext struct {
 	SessionID uuid.UUID `json:"session_id"`
 	UserID    uuid.UUID `json:"user_id"`
@@ -16,6 +17,7 @@ type UserContext struct {
 	Roles     []string  `json:"roles"`
 }
 
+// GetUserContext retrieves the user context from the Gin context.
 func GetUserContext(c *gin.Context) (UserContext, error) {
 	var deviceId uuid.UUID
 	var userId uuid.UUID
@@ -75,6 +77,8 @@ func GetUserContext(c *gin.Context) (UserContext, error) {
 
 }
 
+// GetContextWithTimeout creates a new context with a specified timeout duration in seconds.
+// This function is useful for operations that need to be completed within a certain time frame, allowing for cancellation if the operation takes too long.
 func GetContextWithTimeout(duration int64) (context.Context, context.CancelFunc) {
 	return context.WithTimeout(context.Background(), time.Duration(duration)*time.Second)
 }
