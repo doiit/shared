@@ -1,10 +1,10 @@
 package middleware
 
 import (
-	"doiit-shared/helper"
 	"net/http"
 	"slices"
 
+	"github.com/doiit/shared/helper"
 	"github.com/gin-gonic/gin"
 )
 
