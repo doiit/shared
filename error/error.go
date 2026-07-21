@@ -5,39 +5,36 @@ import (
 	"fmt"
 )
 
-type errorType string
-type messageType string
-
 const (
-	InvalidTokenMessage    messageType = "Invalid token. Kindly login again"
-	ExpireTokenMessage     messageType = "Token expired. Login again"
-	InvalidClaimsMessage   messageType = "Invalid token claims"
-	AccessDeniedMessage    messageType = "Access denied"
-	SessionExpiredMessage  messageType = "Session has expired"
-	SessionRevokedMessage  messageType = "Session was revoked"
-	ValidationErrorMessage messageType = "Validation error"
-	UnauthorizedMessage    messageType = "Unauthorized access"
+	InvalidTokenMessage    string = "Invalid token. Kindly login again"
+	ExpireTokenMessage     string = "Token expired. Login again"
+	InvalidClaimsMessage   string = "Invalid token claims"
+	AccessDeniedMessage    string = "Access denied"
+	SessionExpiredMessage  string = "Session has expired"
+	SessionRevokedMessage  string = "Session was revoked"
+	ValidationErrorMessage string = "Validation error"
+	UnauthorizedMessage    string = "Unauthorized access"
 )
 
 const (
-	AccessDenied          errorType = "invalid_token"
-	BindingError          errorType = "binding_error"
-	BadRequestError       errorType = "bad_request"
-	ExpireToken           errorType = "token_expired"
-	RefreshToken          errorType = "refresh_token_error"
-	HashingError          errorType = "hashing_error"
-	InvalidToken          errorType = "invalid_token"
-	InvalidClaims         errorType = "invalid_token"
-	InvalidCredentials    errorType = "invalid_credentials"
-	SessionExpired        errorType = "session_error"
-	SessionRevoked        errorType = "session_revoked"
-	ValidationError       errorType = "validation_error"
-	DuplicateError        errorType = "duplicate_error"
-	ResourceCreationError errorType = "resource_creation_error"
-	ResourceUpdateError   errorType = "resource_update_error"
-	ResourceDeletionError errorType = "resource_deletion_error"
-	NotFound              errorType = "not_found"
-	Unauthorized          errorType = "unauthorized"
+	AccessDenied          string = "invalid_token"
+	BindingError          string = "binding_error"
+	BadRequestError       string = "bad_request"
+	ExpireToken           string = "token_expired"
+	RefreshToken          string = "refresh_token_error"
+	HashingError          string = "hashing_error"
+	InvalidToken          string = "invalid_token"
+	InvalidClaims         string = "invalid_token"
+	InvalidCredentials    string = "invalid_credentials"
+	SessionExpired        string = "session_error"
+	SessionRevoked        string = "session_revoked"
+	ValidationError       string = "validation_error"
+	DuplicateError        string = "duplicate_error"
+	ResourceCreationError string = "resource_creation_error"
+	ResourceUpdateError   string = "resource_update_error"
+	ResourceDeletionError string = "resource_deletion_error"
+	NotFound              string = "not_found"
+	Unauthorized          string = "unauthorized"
 )
 
 // Error returns a new error with the given message.
