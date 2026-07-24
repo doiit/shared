@@ -4,6 +4,7 @@ import (
 	"log"
 
 	shared_error "github.com/doiit/shared/error"
+	"github.com/doiit/shared/events"
 	"github.com/doiit/shared/helper"
 	"github.com/doiit/shared/logger"
 	"github.com/doiit/shared/middleware"
@@ -69,4 +70,11 @@ func RoleGuard(allowedRoles ...string) gin.HandlerFunc {
 // Get IP Adrress from the request gin context
 func GetIPAddress(c *gin.Context) string {
 	return helper.GetIP(c)
+}
+
+// Instantiate an event producer.
+// The event producer/publisher sends an event to the broker and the consumer grabs the specific topic and process it
+// this allows for communication to be very easy and handles complex scenarios easily.
+func NewEventProducer(brokers []string, topic string) (*events.EventProducer, error) {
+	return events.NewEventProducer(brokers, topic)
 }
